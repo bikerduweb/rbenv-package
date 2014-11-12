@@ -11,7 +11,7 @@ Dockerfile to build 32 bits ruby deb package for my own needs.
 
 Then run
 ```
-./run.sh
+sh ./run.sh
 ```
 
 
@@ -19,8 +19,9 @@ Then run
 
 
 ```
-$ docker build -t veilleperso/ruby-package .
-docker run -it --rm -v `pwd`/packages:/opt/packages veilleperso/ruby-package
+mkdir -p $(pwd)/packages
+docker build -t veilleperso/ruby-package .
+docker run -it --rm -v $(pwd)/packages:/opt/packages veilleperso/ruby-package
 ```
 
 Dockerfile execute belows;
