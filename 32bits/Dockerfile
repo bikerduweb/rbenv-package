@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM veilleperso/trusty32
 
 MAINTAINER veilleperso "https://github.com/veilleperso"
 
@@ -24,7 +24,7 @@ RUN echo 'gem: --no-rdoc --no-ri' >> /root/.gemrc
 ADD ./versions.txt /root/versions.txt
 ADD ./gems.txt /usr/local/rbenv/default-gems
 
-ENV CONFIGURE_OPTS --disable-install-doc --enable-shared
+ENV CONFIGURE_OPTS --disable-install-doc --with-arch=i686 --enable-shared
 RUN xargs -L 1 rbenv install < /root/versions.txt
 RUN rbenv global $(head -n 1 /root/versions.txt)
 

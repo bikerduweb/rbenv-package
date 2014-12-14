@@ -1,1 +1,5 @@
 *.deb
+32bits/*.txt
+32bits/build_packages.sh
+64bits/*.txt
+64bits/build_packages.sh

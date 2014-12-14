@@ -1,7 +1,7 @@
 Dorkerfile-ruby-package [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/veilleperso/dockerfile-ruby-package/blob/master/LICENCE)
 ====
 
-Dockerfile to build 32 bits ruby deb package for my own needs.
+Dockerfile to build 32b and 64b ruby deb package for my own needs.
  
 
 ## Usage
@@ -18,10 +18,14 @@ sh ./run.sh
 ## Build your own rbenv image
 
 
+To build 32 bits rubies
 ```
-mkdir -p $(pwd)/packages
-docker build -t veilleperso/ruby-package .
-docker run -it --rm -v $(pwd)/packages:/opt/packages veilleperso/ruby-package
+./32bits.sh
+```
+
+To build 64 bits rubies
+```
+./64bits.sh
 ```
 
 Dockerfile execute belows;
