@@ -18,16 +18,6 @@ sh ./run.sh
 ## Build your own rbenv image
 
 
-To build 32 bits rubies
-```
-./32bits.sh
-```
-
-To build 64 bits rubies
-```
-./64bits.sh
-```
-
 Dockerfile execute belows;
 
 1. Pull ubuntu image
