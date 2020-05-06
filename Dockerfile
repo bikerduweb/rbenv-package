@@ -4,7 +4,8 @@ MAINTAINER bikerduweb "https://github.com/bikerduweb"
 
 # Install packages for building ruby
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y --force-yes autoconf bison build-essential g++ libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev
+RUN apt-get install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages autoconf bison build-essential g++ libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev
+RUN apt-get install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages curl git
 RUN apt-get clean
 
 # Install rbenv, ruby-build and rbenv-default-gems
