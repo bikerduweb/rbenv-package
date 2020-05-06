@@ -1,9 +1,9 @@
-FROM ubuntu:trusty
+FROM ubuntu:bionic
 
-MAINTAINER veilleperso "https://github.com/veilleperso"
+MAINTAINER bikerduweb "https://github.com/bikerduweb"
 
 # Install packages for building ruby
-RUN apt-get update && apt-get upgrade -y --force-yes
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y --force-yes build-essential curl git zlib1g-dev libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt-dev
 RUN apt-get clean
 
@@ -27,6 +27,7 @@ RUN echo 'gem: --no-rdoc --no-ri' >> /root/.gemrc
 ADD ./versions.txt /root/versions.txt
 ADD ./gems.txt /usr/local/rbenv/default-gems
 ADD ./build_packages.sh /root/build_packages.sh
+
 
 # build
 RUN rbenv update

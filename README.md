@@ -1,8 +1,8 @@
-Dorkerfile-ruby-package [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/veilleperso/dockerfile-ruby-package/blob/master/LICENCE)
+rbenv-package [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/bikerduweb/rbenv-package/blob/master/LICENCE)
 ====
 
-Dockerfile to build 32b and 64b ruby deb package for my own needs.
- 
+Dockerfile to build rbenv ruby deb package for my own needs
+
 
 ## Usage
 
@@ -30,7 +30,7 @@ Dockerfile execute belows;
 
 ## Contribution
 
-1. Fork ([https://github.com/veilleperso/dockerfile-ruby-package/fork](https://github.com/veilleperso/dockerfile-ruby-package/fork))
+1. Fork ([https://github.com/bikerduweb/rbenv-package/fork](https://github.com/bikerduweb/rbenv-package/fork))
 1. Create a feature branch
 1. Commit your changes
 1. Rebase your local changes against the master branch
@@ -39,4 +39,4 @@ Dockerfile execute belows;
 
 ## Author
 
-[veilleperso](https://github.com/veilleperso)
+[bikerduweb](https://github.com/bikerduweb)
