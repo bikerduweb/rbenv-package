@@ -4,7 +4,7 @@ MAINTAINER bikerduweb "https://github.com/bikerduweb"
 
 # Install packages for building ruby
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y --force-yes build-essential curl git zlib1g-dev libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt-dev
+RUN apt-get install -y --force-yes autoconf bison build-essential g++ libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev
 RUN apt-get clean
 
 # Install rbenv, ruby-build and rbenv-default-gems
@@ -16,7 +16,8 @@ RUN git clone https://github.com/rkh/rbenv-update.git /usr/local/rbenv/plugins/r
 # config
 ENV PATH /usr/local/rbenv/bin:$PATH
 ENV RBENV_ROOT /usr/local/rbenv
-ENV CONFIGURE_OPTS --disable-install-doc --with-arch=i686 --enable-shared
+# ENV CONFIGURE_OPTS --disable-install-doc --with-arch=i686 --enable-shared
+ENV CONFIGURE_OPTS --disable-install-doc
 
 RUN echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh # or /etc/profile
 RUN echo 'eval "$(rbenv init -)"' >> /root/.bashrc
@@ -28,11 +29,12 @@ ADD ./versions.txt /root/versions.txt
 ADD ./gems.txt /usr/local/rbenv/default-gems
 ADD ./build_packages.sh /root/build_packages.sh
 
-
 # build
+RUN /usr/local/rbenv/plugins/ruby-build/install.sh
 RUN rbenv update
 RUN xargs -L 1 rbenv install < /root/versions.txt
 RUN rbenv global $(head -n 1 /root/versions.txt)
+
 # create package
 RUN rbenv exec gem install fpm
 CMD sh /root/build_packages.sh
