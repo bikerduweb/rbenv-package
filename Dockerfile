@@ -1,10 +1,8 @@
-FROM ubuntu:bionic
-
-MAINTAINER bikerduweb "https://github.com/bikerduweb"
+FROM ubuntu:focal
 
 # Install packages for building ruby
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages autoconf bison build-essential g++ libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev
+RUN apt-get install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages autoconf bison build-essential g++ libssl-dev libyaml-dev libreadline-dev zlib1g-dev libncurses-dev libffi-dev libgdbm-dev
 RUN apt-get install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages curl git
 RUN apt-get clean
 
@@ -35,6 +33,7 @@ RUN /usr/local/rbenv/plugins/ruby-build/install.sh
 RUN rbenv update
 RUN xargs -L 1 rbenv install < /root/versions.txt
 RUN rbenv global $(head -n 1 /root/versions.txt)
+RUN rbenv exec gem update
 
 # create package
 RUN rbenv exec gem install fpm
