@@ -22,7 +22,7 @@ ENV CONFIGURE_OPTS --disable-install-doc
 RUN echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh # or /etc/profile
 RUN echo 'eval "$(rbenv init -)"' >> /root/.bashrc
 # configure gem install
-RUN echo 'gem: --no-rdoc --no-ri' >> /root/.gemrc
+# RUN echo 'gem: --no-rdoc --no-ri' >> /root/.gemrc
 
 # Install multiple versions of ruby
 ADD ./versions.txt /root/versions.txt
