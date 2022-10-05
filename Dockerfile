@@ -24,6 +24,7 @@ RUN echo 'eval "$(rbenv init -)"' >> /root/.bashrc
 # configure gem install
 # RUN echo 'gem: --no-rdoc --no-ri' >> /root/.gemrc
 ADD ./build_packages.sh /root/build_packages.sh
+ADD ./.gemrc /root/.gemrc
 
 FROM rbenvbuilder
 # Install multiple versions of ruby
@@ -36,7 +37,7 @@ RUN rbenv update
 RUN xargs -L 1 rbenv install < /root/versions.txt
 # RUN rbenv global $(head -n 1 /root/versions.txt)
 # RUN rbenv exec gem update
-RUN bash -l -c 'for v in $(cat /root/versions.txt); do rbenv global $v; rbenv exec gem update; done'
+RUN bash -l -c 'for v in $(cat /root/versions.txt); do rbenv global $v; rbenv exec gem --no-document update; done'
 
 # create package
 RUN rbenv exec gem install fpm
