@@ -1,4 +1,4 @@
-FROM ubuntu:focal as rbenvubuntu
+FROM ubuntu:jammy as rbenvubuntu
 
 # Install packages for building ruby
 RUN apt-get update && apt-get upgrade -y
