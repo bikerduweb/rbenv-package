@@ -34,8 +34,9 @@ ADD ./gems.txt /usr/local/rbenv/default-gems
 RUN /usr/local/rbenv/plugins/ruby-build/install.sh
 RUN rbenv update
 RUN xargs -L 1 rbenv install < /root/versions.txt
-RUN rbenv global $(head -n 1 /root/versions.txt)
-RUN rbenv exec gem update
+# RUN rbenv global $(head -n 1 /root/versions.txt)
+# RUN rbenv exec gem update
+RUN bash -l -c 'for v in $(cat /root/versions.txt); do rbenv global $v; rbenv exec gem update; done'
 
 # create package
 RUN rbenv exec gem install fpm
