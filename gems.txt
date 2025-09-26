@@ -1,4 +1,3 @@
-bundler ~>1.17.3
-bundler ~>2.1.4
-bundler ~>2.4.12
-rake ~>13.0.1
+bundler ~>2.6.9
+bundler ~>2.7.2
+rake ~>13.2.1
