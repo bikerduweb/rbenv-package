@@ -1,4 +1,4 @@
-FROM ubuntu:jammy as rbenvubuntu
+FROM ubuntu:noble AS rbenvubuntu
 
 # Install packages for building ruby
 RUN apt-get update && apt-get upgrade -y
@@ -6,7 +6,7 @@ RUN apt-get install -y --allow-downgrades --allow-remove-essential --allow-chang
 RUN apt-get install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages curl git
 RUN apt-get clean
 
-FROM rbenvubuntu as rbenvbuilder
+FROM rbenvubuntu AS rbenvbuilder
 # Install rbenv, ruby-build and rbenv-default-gems
 RUN git clone https://github.com/sstephenson/rbenv.git /usr/local/rbenv
 RUN git clone https://github.com/sstephenson/ruby-build.git /usr/local/rbenv/plugins/ruby-build
@@ -26,7 +26,7 @@ RUN echo 'eval "$(rbenv init -)"' >> /root/.bashrc
 ADD ./build_packages.sh /root/build_packages.sh
 ADD ./.gemrc /root/.gemrc
 
-FROM rbenvbuilder
+FROM rbenvbuilder AS rbenvinstaller
 # Install multiple versions of ruby
 ADD ./versions.txt /root/versions.txt
 ADD ./gems.txt /usr/local/rbenv/default-gems

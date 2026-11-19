@@ -1,3 +1,2 @@
-bundler ~>2.6.9
 bundler ~>2.7.2
-rake ~>13.2.1
+rake ~>13.3.1
